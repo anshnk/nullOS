@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preload" href="./assets/frameworks/winbox.bundle.min.js" as="script">
+</head>
+<body>
+
+    <div id="taskbar" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <!-- Example app icons and names -->
+        <div class="app-icon" id="app1" draggable="true" ondragstart="drag(event)" onclick="openApp('./applications/browser/', 'Browser')">
+            <img src="./assets/images/chrome.svg" alt="App 1" height="725" width="725">
+            <span class="app-name">App 1</span>
+        </div>
+
+        <div class="app-icon" id="app2" draggable="true" ondragstart="drag(event)" onclick="openApp('./applications/wallpaperswitcher', 'Wallpaper Switcher')">
+            <img src="./assets/images/wallpaper.png" alt="Wallpaper Switcher">
+            <span class="app-name">Wallpaper Switcher</span>
+        </div>
+
+        <!-- Add more app icons as needed -->
+
+    </div>
+
+    <script src="./assets/frameworks/winbox.bundle.min.js" async></script>
+
+    <script>
+        // Function to open apps
+        function openApp(url, appName) {
+            if (appName === 'Wallpaper Switcher') {
+                // Open the wallpaper switcher
+                const win = new WinBox({
+                    title: appName,
+                    url: url,
+                    width: '40%',
+                    height: '22%',
+                    border: '0.1em',
+                    background: "#717378",
+                });
+
+                // Optional: You can focus on the new window if desired
+                win.focus();
+            } else {
+                // Create a new WinBox window for other apps
+                const win = new WinBox({
+                    title: appName,
+                    url: url,
+                    width: '80%',
+                    height: '80%',
+                    border: '0.1em',
+                    background: "#717378",
+                });
+
+                // Optional: You can focus on the new window if desired
+                win.focus();
+            }
+        }
+
+        // Function to handle drag start
+        function drag(event) {
+            event.dataTransfer.setData('text/plain', event.target.id);
+        }
+
+        // Function to handle drag over and drop
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        // Function to handle drop
+        function drop(event) {
+            event.preventDefault();
+            const draggedAppId = event.dataTransfer.getData('text/plain');
+            const draggedApp = document.getElementById(draggedAppId);
+            const taskbar = document.getElementById('taskbar');
+
+            // Insert the dragged element before the drop target
+            taskbar.insertBefore(draggedApp, event.target);
+
+            // Update the order and save to localStorage
+            updateOrder();
+        }
+
+        // Function to get the order of icons from localStorage
+        function getOrder() {
+            const order = localStorage.getItem('appOrder');
+            return order ? JSON.parse(order) : [];
+        }
+
+        // Function to set the order of icons in localStorage
+        function setOrder(order) {
+            localStorage.setItem('appOrder', JSON.stringify(order));
+        }
+
+        // Function to update the order of icons
+        function updateOrder() {
+            const appOrder = Array.from(document.querySelectorAll('.app-icon')).map(icon => icon.id);
+            setOrder(appOrder);
+        }
+
+        // Set initial order or load from localStorage
+        const appOrder = getOrder();
+
+        // Set the order of icons
+        function setIconOrder() {
+            appOrder.forEach((appId, index) => {
+                const appIcon = document.getElementById(appId);
+                if (appIcon) {
+                    appIcon.style.order = index;
+                }
+            });
+        }
+
+        // Set the initial order
+        setIconOrder();
+
+        // Function to load customCSS from localStorage and set it as background
+        function loadCustomCSS() {
+            const customCSS = localStorage.getItem('customCSS');
+            if (customCSS) {
+                document.body.style.backgroundImage = customCSS;
+            }
+        }
+
+        // Load customCSS on page load
+        loadCustomCSS();
+    </script>
+</body>
+</html>

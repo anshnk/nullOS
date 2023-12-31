@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallpaper Switcher</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <div id="wallpaper-switcher">
+        <h1>Wallpaper Switcher</h1>
+        <h2>Once this pages background changes, refresh the main page.</h2>
+        <!-- Example wallpaper options -->
+        <button onclick="switchWallpaper('url(\'../../assets/wallpapers/Blues.jpg\')')">Wallpaper 1</button>
+        <button onclick="switchWallpaper('url(\'../../assets/wallpapers/Reds.jpg\')')">Wallpaper 2</button>
+        <button onclick="switchWallpaper('url(\'../../assets/wallpapers/Yellows.jpg\')')">Wallpaper 3</button>
+
+        <!-- Add more wallpaper options as needed -->
+
+    </div>
+
+    <script>
+        // Function to switch wallpaper and update customCSS in localStorage
+        function switchWallpaper(imageLocation) {
+            // Apply the wallpaper to the current window
+            document.body.style.backgroundImage = imageLocation;
+
+            // Save the new customCSS to localStorage
+            localStorage.setItem('customCSS', imageLocation);
+            Location.reload ()
+        }
+    </script>
+</body>
+</html>

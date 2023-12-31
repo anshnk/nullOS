@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow-x: hidden; /* Add this line to hide horizontal overflow */
+}
+
+#taskbar {
+    background-color: #333;
+    padding: 10px;
+    display: flex;
+    justify-content: center; /* Center the items */
+    align-items: center; /* Center vertically */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    overflow-x: auto; /* Add this line to allow horizontal scrolling if needed */
+    border-top-right-radius: 100px;
+    border-top-left-radius: 100px;
+}
+
+.app-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 10px; /* Add margin for space between apps */
+    border: none;
+}
+
+.app-icon img {
+    margin-top: 5px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* or object-fit: cover; depending on your preference */
+}
+
+.app-icon:hover {
+    background-color: #555;
+}
+
+.app-name {
+    text-align: center;
+    margin-top: 5px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    width: 60px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
