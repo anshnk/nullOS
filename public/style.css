@@ -60,3 +60,7 @@ body {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+#app4 {
+    border-radius: 50px;
+}

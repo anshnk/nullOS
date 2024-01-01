@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>nullOS</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="preload" href="./assets/frameworks/winbox.bundle.min.js" as="script">
 </head>
@@ -11,14 +11,19 @@
 
     <div id="taskbar" ondrop="drop(event)" ondragover="allowDrop(event)">
         <!-- Example app icons and names -->
-        <div class="app-icon" id="app1" draggable="true" ondragstart="drag(event)" onclick="openApp('./applications/browser/', 'Browser')">
-            <img src="./assets/images/chrome.svg" alt="App 1" height="725" width="725">
-            <span class="app-name">App 1</span>
+        <div class="app-icon" id="app1" draggable="true" ondragstart="drag(event)" onclick="openApp('./applications/testbrowser', 'Test Browser')">
+            <img src="./assets/images/chrome.svg" alt="Test Browser">
+            <span class="app-name">Test Browser</span>
         </div>
 
         <div class="app-icon" id="app2" draggable="true" ondragstart="drag(event)" onclick="openApp('./applications/wallpaperswitcher', 'Wallpaper Switcher')">
             <img src="./assets/images/wallpaper.png" alt="Wallpaper Switcher">
             <span class="app-name">Wallpaper Switcher</span>
+        </div>
+
+        <div class="app-icon" id="app3" draggable="true" ondragstart="drag(event)" onclick="openApp('/uv/service/hvtrs8%2F-wuw%2Cymuvu%60e%2Ccmm-', 'Youtube')">
+            <img src="./assets/images/youtube.png" alt="Test Browser">
+            <span class="app-name">Youtube</span>
         </div>
 
         <!-- Add more app icons as needed -->
