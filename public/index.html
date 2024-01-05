@@ -44,6 +44,10 @@
                     height: '22%',
                     border: '0.1em',
                     background: "#717378",
+                    onclose: function () {
+                    // Reload the root page when the window is closed
+                    window.location.reload();
+                },
                 });
 
                 // Optional: You can focus on the new window if desired
