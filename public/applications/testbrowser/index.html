@@ -153,20 +153,15 @@ background: transparent; /* make scrollbar transparent */
       <div class="tabButton" onclick="reload()" style="margin-right: 10px;">
           <i data-lucide='rotate-cw' style="width: 16px"></i>
       </div>
-      <!--
       <div class="tabButton" onclick="goBack()">
-          <i data-lucide='arrow-left' style="width: 16px"></i>
+        <i data-lucide='arrow-left' style="width: 16px"></i>
       </div>
-      <div class="tabButton" onclick="goForwards()" style="margin-right: 10px;">
-          <i data-lucide='arrow-right' style="width: 16px"></i>
+      <div class="tabButton" onclick="goForward()">
+        <i data-lucide='arrow-right' style="width: 16px"></i>
       </div>
-      -->
 
       <section id="tabslist" class="tabContainer">
       </section>
-      <div class="tabButton" onclick="copyLink()">
-          <i data-lucide='clipboard' style="width: 16px"></i>
-      </div>
       <div class="tabButton" onclick="newTab('./crazy.html')" style="margin-right: 10px;">
           <i data-lucide='plus'></i>
       </div>
@@ -416,6 +411,14 @@ background: transparent; /* make scrollbar transparent */
               })
           });
       }, 500)
+
+      function goBack() {
+        getActiveIFrame().contentWindow.history.back();
+      }
+
+      function goForward() {
+        getActiveIFrame().contentWindow.history.forward();
+      }
       lucide.createIcons();
       newTab('./crazy.html');
   </script>

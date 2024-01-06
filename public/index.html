@@ -21,6 +21,7 @@
     </div>
 
     <div id="taskbar" ondrop="drop(event)" ondragover="allowDrop(event)">
+
         <!-- Example app icons and names -->
         <div class="app-icon" id="app1" draggable="true" ondragstart="drag(event)" onclick="openApp('./applications/testbrowser', 'Test Browser')">
             <img src="./assets/images/chrome.svg" alt="Test Browser">
@@ -37,8 +38,13 @@
             <span class="app-name">Youtube</span>
         </div>
 
-        <!-- Add more app icons as needed -->
+        <div class="app-icon" id="app4" draggable="true" ondragstart="drag(event)" onclick="openApp('/uv/service/hvtrs8%2F-gktju%60.aoo%2Fcnqhlk-nwlnOQ', 'Github')">
+            <img src="./assets/images/github.png" alt="Test Browser">
+            <span class="app-name">Github</span>
+        </div>
 
+        <!-- Add more app icons as needed -->
+        <div id="clock"></div>
     </div>
 
     <script src="./assets/frameworks/winbox.bundle.min.js" async></script>
@@ -158,6 +164,23 @@
             // Remove the unclickable class to make the body clickable again
             document.body.classList.remove('unclickable');
         }, 5000); // 5000 milliseconds = 5 seconds
+
+        // Add this within the script tag of your HTML, after the existing JavaScript code
+        function updateClock() {
+            const clock = document.getElementById('clock');
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const timeString = `${hours}:${minutes}`;
+            clock.textContent = timeString;
+        }
+
+        // Update the clock every minute
+        setInterval(updateClock, 60000);
+
+        // Initial update
+        updateClock();
+    
     </script>
 </body>
 </html>
